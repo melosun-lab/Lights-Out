@@ -6,10 +6,10 @@ public class GameCenter : MonoBehaviour
     void EndGame(){
 
     }
-
+    
     public void WinGame(){
-        Debug.Log("Win");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Cursor.visible = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void LoseGame(){
@@ -18,6 +18,7 @@ public class GameCenter : MonoBehaviour
     }
 
     public void Restart(){
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

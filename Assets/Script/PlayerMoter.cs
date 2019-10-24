@@ -12,6 +12,8 @@ public class PlayerMoter : MonoBehaviour
     public Camera cam;
     public Rigidbody rb;
 
+    public bool moving = false;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
     }
@@ -35,7 +37,11 @@ public class PlayerMoter : MonoBehaviour
 
     void GetMoved(){
         if(this.velocity != Vector3.zero){
+            moving = true;
             rb.MovePosition(rb.position + this.velocity * Time.fixedDeltaTime);
+        }
+        else{
+            moving = false;
         }
     }
 
