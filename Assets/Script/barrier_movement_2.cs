@@ -5,12 +5,17 @@ using UnityEngine;
 public class barrier_movement_2 : MonoBehaviour
 {
     public SphereCollider barrier;
-    private float count = 0;
+    private float count = 0f;
     private float position;
     // Start is called before the first frame update
+    private float Position_x, Position_y, Position_z;
+    private float Velocity = 7f;
+    private int choice = 2;
     private void Start()
     {
-
+        Position_x = barrier.transform.localPosition.x;
+        Position_y = barrier.transform.localPosition.y;
+        Position_z = barrier.transform.localPosition.z;
     }
 
     // Update is called once per frame
@@ -18,18 +23,39 @@ public class barrier_movement_2 : MonoBehaviour
     {
 
         count += Time.deltaTime;
-        if (count > 14)
+        switch (choice)
         {
-            count -= 14;
+            case 1:
+                if (count > Velocity * 2)
+                {
+                    count -= Velocity * 2;
+                }
+                if (count >= 0 && count <= 3.5)
+                    position = count + Position_z;
+                else if (count > Velocity / 2 && count <= Velocity)
+                    position = Position_z + Velocity - count;
+                else if (count > Velocity && count <= Velocity * 3 / 2)
+                    position = Position_z + Velocity - count;
+                else if (count > Velocity * 3 / 2 && count <= Velocity * 2)
+                    position = Position_z - Velocity * 2 + count;
+                barrier.transform.localPosition = new Vector3(Position_x, Position_y, position);
+                break;
+            case 2:
+                if (count > Velocity * 2)
+                {
+                    count -= Velocity * 2;
+                }
+                if (count >= 0 && count <= Velocity / 2)
+                    position = -count + Position_z;
+                else if (count > Velocity / 2 && count <= Velocity)
+                    position = Position_z - Velocity + count;
+                else if (count > Velocity && count <= Velocity * 3 / 2)
+                    position = Position_z - Velocity + count;
+                else if (count > Velocity * 3 / 2 && count <= Velocity * 2)
+                    position = Position_z + Velocity * 2 - count;
+                barrier.transform.localPosition = new Vector3(Position_x, Position_y, position);
+                break;
         }
-        if (count >= 0 && count <= 3.5)
-            position = -count - 47.5f;
-        else if (count > 3.5 && count <= 7)
-            position = -54.5f + count;
-        else if (count > 7 && count <= 10.5)
-            position = -54.5f + count;
-        else if (count > 10.5 && count <= 14)
-            position = -33.5f - count;
-        barrier.transform.localPosition = new Vector3(60f, 3f, position);
+
     }
 }
