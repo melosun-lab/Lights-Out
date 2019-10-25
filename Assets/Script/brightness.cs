@@ -8,6 +8,7 @@ public class brightness : MonoBehaviour
     public GameObject timerUI;
 
     public Text text;
+    public GameObject Timeup_UI;
     private float count = 120;
 
     void Start()
@@ -24,7 +25,8 @@ public class brightness : MonoBehaviour
             timerUI.SetActive(true);
         }
         if(count <= -5){
-            FindObjectOfType<GameCenter>().LoseGame();
+            Timeup_UI.SetActive(true);
+            FindObjectOfType<GameCenter>().Dead();
         }
     }
 }

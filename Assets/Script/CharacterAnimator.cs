@@ -21,7 +21,7 @@ public class CharacterAnimator : MonoBehaviour
         //float speedPercent = agent.velocity.magnitude / agent.speed;
         float speedPercent;
         if(FindObjectOfType<PlayerMoter>().moving){
-            speedPercent = 1f;
+            speedPercent = 0.7f;
         }
         else{
             speedPercent = 0f;
