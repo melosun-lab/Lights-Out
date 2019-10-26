@@ -9,7 +9,8 @@ public class barrier_movement : MonoBehaviour
     private float position;
     // Start is called before the first frame update
     private float Position_x, Position_y, Position_z;
-    private float Velocity = 4f;
+    private float Amplitude = 7f;
+    private float Frequency = 2f;
     private int choice = 1;
     private void Start()
     {
@@ -22,37 +23,37 @@ public class barrier_movement : MonoBehaviour
     void Update()
     {
 
-        count += Time.deltaTime;
+        count += Time.deltaTime * Frequency;
         switch (choice)
         {
             case 1:
-                if (count > Velocity * 2)
+                if (count > Amplitude * 2)
                 {
-                    count -= Velocity * 2;
+                    count -= Amplitude * 2;
                 }
                 if (count >= 0 && count <= 3.5)
                     position = count + Position_z;
-                else if (count > Velocity / 2 && count <= Velocity)
-                    position = Position_z + Velocity - count;
-                else if (count > Velocity && count <= Velocity * 3 / 2)
-                    position = Position_z + Velocity - count;
-                else if (count > Velocity * 3 / 2 && count <= Velocity * 2)
-                    position = Position_z - Velocity * 2 + count;
+                else if (count > Amplitude / 2 && count <= Amplitude)
+                    position = Position_z + Amplitude - count;
+                else if (count > Amplitude && count <= Amplitude * 3 / 2)
+                    position = Position_z + Amplitude - count;
+                else if (count > Amplitude * 3 / 2 && count <= Amplitude * 2)
+                    position = Position_z - Amplitude * 2 + count;
                 barrier.transform.localPosition = new Vector3(Position_x, Position_y, position);
                 break;
             case 2:
-                if (count > Velocity * 2)
+                if (count > Amplitude * 2)
                 {
-                    count -= Velocity * 2;
+                    count -= Amplitude * 2;
                 }
-                if (count >= 0 && count <= Velocity / 2)
+                if (count >= 0 && count <= Amplitude / 2)
                     position = -count + Position_z;
-                else if (count > Velocity / 2 && count <= Velocity)
-                    position = Position_z - Velocity + count;
-                else if (count > Velocity && count <= Velocity * 3 / 2)
-                    position = Position_z - Velocity + count;
-                else if (count > Velocity * 3 / 2 && count <= Velocity * 2)
-                    position = Position_z + Velocity * 2 - count;
+                else if (count > Amplitude / 2 && count <= Amplitude)
+                    position = Position_z - Amplitude + count;
+                else if (count > Amplitude && count <= Amplitude * 3 / 2)
+                    position = Position_z - Amplitude + count;
+                else if (count > Amplitude * 3 / 2 && count <= Amplitude * 2)
+                    position = Position_z + Amplitude * 2 - count;
                 barrier.transform.localPosition = new Vector3(Position_x, Position_y, position);
                 break;
         }
