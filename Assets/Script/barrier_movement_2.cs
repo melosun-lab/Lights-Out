@@ -9,7 +9,7 @@ public class barrier_movement_2 : MonoBehaviour
     private float position;
     // Start is called before the first frame update
     private float Position_x, Position_y, Position_z;
-    private float Velocity = 7f;
+    private float Velocity = 4f;
     private int choice = 2;
     private void Start()
     {
