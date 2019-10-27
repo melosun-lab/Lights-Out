@@ -12,6 +12,8 @@ public class PlayerMoter : MonoBehaviour
     public Camera cam;
     public Rigidbody rb;
 
+    public GameObject gun;
+
     public bool moving = false;
 
     void Start() {
@@ -59,6 +61,7 @@ public class PlayerMoter : MonoBehaviour
                 }
             }
             cam.transform.Rotate(-cam_rotation);
+            gun.transform.Rotate(-cam_rotation);
         }
     }
 }
